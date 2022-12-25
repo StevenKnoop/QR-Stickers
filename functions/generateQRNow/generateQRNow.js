@@ -17,7 +17,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 exports.handler = async (event, context) => {
-  try{
 
 // Set up the /generateQRNow route to handle POST requests
 app.post('/generateQRNow', upload.single('imageFile'), (req, res) => {
@@ -38,6 +37,7 @@ app.post('/generateQRNow', upload.single('imageFile'), (req, res) => {
               // Return the QR code image as a response
               res.setHeader('Content-Type', 'image/png');
               res.send(qrCodeImage);
+              return qrCodeImage;
             }
           });
 
@@ -61,18 +61,8 @@ app.post('/generateQRNow', upload.single('imageFile'), (req, res) => {
     });
   }
 });
+};
 
-return {
-  statusCode: 200,
-  body: JSON.stringify(url)
-};
-} catch (err) {
-return {
-  statusCode: 500,
-  body: err.toString()
-};
-}
-};
 
 // Start the server
 app.listen(3000, () => {

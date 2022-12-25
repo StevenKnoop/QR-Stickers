@@ -6,6 +6,7 @@ var ImageKit = require("imagekit");
 var fs = require('fs');
 
 const app = express();
+var url = '';
 
 // Set up multer middleware to handle file uploads
 const storage = multer.diskStorage({
@@ -23,7 +24,6 @@ app.post('/generateQRNow', upload.single('imageFile'), (req, res) => {
   // Get the image file and video URL from the request body
   const imageFile = req.file;
   const videoUrl = req.body.videoUrl;
-  var url = '';
 
   if(imageFile)
   {
@@ -61,9 +61,10 @@ app.post('/generateQRNow', upload.single('imageFile'), (req, res) => {
     });
   }
 });
+
 return {
   statusCode: 200,
-  body: JSON.stringify(data)
+  body: JSON.stringify(url)
 };
 } catch (err) {
 return {

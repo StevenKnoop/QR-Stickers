@@ -56,16 +56,16 @@
 <body>
   <div class="container">
     <!-- Add a form with an image upload input field and a text input field -->
-    <form action="http://localhost:3000/generateQRNow" method="post">
+    <form action="http://localhost:3000/generateQRNow" method="post" enctype='multipart/form-data'>
       <!-- Add a label for the image upload input field -->
-      <label for="image-upload">Image:</label>
+      <label for="imageFile">Image:</label>
       <!-- Add the image upload input field -->
-      <input type="file" id="image-upload" name="imageUrl" accept="image/*">
+      <input type="file" id="imageFile" name="imageFile" accept="image/*">
 
       <!-- Add a label for the text input field -->
-      <label for="video-url">Video URL:</label>
+      <label for="videoUrl">Website/Video URL:</label>
       <!-- Add the text input field -->
-      <input type="text" id="video-url" name="videoUrl" placeholder="Enter the URL of the video">
+      <input type="text" id="videoUrl" name="videoUrl" placeholder="Enter the URL of the video or website">
 
       <!-- Add a big button with the words "Generate QR Code" -->
       <button type="submit">Generate QR Code</button>
